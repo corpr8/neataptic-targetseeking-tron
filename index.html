@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>Target-seeking AI - with acceleration and continued life...</title>
+
+    <!-- Neataptic -->
+    <script src="https://cdn.rawgit.com/wagenaartje/neataptic/14736f72/dist/neataptic.min.js"></script>
+
+    <!-- Other libraries -->
+    <script src="libs/p5.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="js/d3.v3.min.js"></script>
+    <script src="libs/webcola.js"></script>
+
+    <!-- Visualisation -->
+    <script src="js/graph.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row" style="float:left;">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-9">
+          <h2>Best genome</h2>
+          <div>
+          <span>Generation:</span>
+          <span id="generation"></span>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-12 col-lg-12">
+              <svg class="best"/>
+          </div>
+      </div>
+    </div>
+    <div id="field" style="position: absolute; top: 0px; width:100%; margin-right:0px;"></div>
+
+    <!-- The simulation + genetic algorithm -->
+    <script src="js/main.js"></script>
+    <script src="js/population.js"></script>
+    <script src="js/walker.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/field.js"></script>
+  </body>
+</html>
