@@ -32,10 +32,10 @@ Player.prototype = {
     var moveangle = output[0] * 2 * PI;
 
     // Calculate next position
-    this.ax = Math.cos(moveangle) * output[1];
-    this.ay = Math.sin(moveangle) * output[1];
-    this.vx += this.ax;
-    this.vy += this.ay;
+    this.ax = Math.cos(moveangle)
+    this.ay = Math.sin(moveangle)
+    this.vx += this.ax * output[1]
+    this.vy += this.ay * output[1]
 
     // Limit speeds to maximum speed
     this.vx = this.vx > MAX_SPEED ? MAX_SPEED : this.vx < -MAX_SPEED ? -MAX_SPEED : this.vx;
@@ -45,8 +45,10 @@ Player.prototype = {
     this.y += this.vy;
 
     // Limit position to width and height
-    this.x = this.x >= WIDTH  ? WIDTH  : this.x <= 0 ? 0 : this.x;
-    this.y = this.y >= HEIGHT ? HEIGHT : this.y <= 0 ? 0 : this.y;
+    //this.x = this.x >= WIDTH  ? WIDTH  : this.x <= 0 ? 0 : this.x;
+    //this.y = this.y >= HEIGHT ? HEIGHT : this.y <= 0 ? 0 : this.y;
+    this.x = this.x >= WIDTH  ? (this.x - WIDTH)  : this.x <= 0 ? (WIDTH - this.x) : this.x;
+    this.y = this.y >= HEIGHT  ? (this.y - HEIGHT)  : this.y <= 0 ? (HEIGHT - this.y) : this.y;
 
     if(this.x == 0 || this.x == WIDTH) this.vx = -this.vx;
     if(this.y == 0 || this.y == HEIGHT) this.vy = -this.vy;
@@ -65,12 +67,19 @@ Player.prototype = {
     this.vx = newPos.vx
     this.vy = newPos.vy
   },
+  getScore: function(){
+    return this.brain.score
+  },
+  setScore: function(newScore){
+    this.brain.score = newScore
+  },
 
   /** Calculate fitness of this players genome **/
   score: function(){
     var dist = distance(this.x, this.y, walker.x, walker.y);
     if(!isNaN(dist) && dist < SCORE_RADIUS){
       this.brain.score += SCORE_RADIUS - dist;
+      if(this.brain.score <= 0) this.brain.score = 0
     }
 
     // Replace highest score to visualise

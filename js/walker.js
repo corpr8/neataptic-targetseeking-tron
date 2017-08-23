@@ -30,8 +30,12 @@ Walker.prototype = {
     this.y += this.vy;
 
     // Limit position to width and height
-    this.x = this.x >= WIDTH  ? WIDTH  : this.x <= 0 ? 0 : this.x;
-    this.y = this.y >= HEIGHT ? HEIGHT : this.y <= 0 ? 0 : this.y;
+    //this.x = this.x >= WIDTH  ? WIDTH  : this.x <= 0 ? 0 : this.x;
+    //this.y = this.y >= HEIGHT ? HEIGHT : this.y <= 0 ? 0 : this.y;
+
+    this.x = this.x >= WIDTH  ? (this.x - WIDTH)  : this.x <= 0 ? (WIDTH - this.x) : this.x;
+    this.y = this.y >= HEIGHT  ? (this.y - HEIGHT)  : this.y <= 0 ? (HEIGHT - this.y) : this.y;
+
 
     if(this.x == 0 || this.x == WIDTH){
       this.vx = -this.vx;

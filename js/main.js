@@ -8,8 +8,8 @@ var Architect = neataptic.Architect;
 Config.warnings = false;
 
 /** Settings */
-var WIDTH            = $('#field').width();
-var HEIGHT           = 1080;
+var WIDTH            = $(window).width();
+var HEIGHT           = $(window).height();
 var MAX_SPEED        = 10;
 var START_X          = WIDTH/2;
 var START_Y          = HEIGHT/2;
@@ -81,9 +81,12 @@ function startEvaluation(){
     } else {
       //console.log('existed')
       var oldPos = players[v].getPos()
+      var oldScore = players[v].getScore()
+      //console.log(oldScore, oldPos)
       players.splice(v,1)
       players[v] = new Player(genome, v);
       players[v].setPos(oldPos)
+      players[v].setScore(oldScore * .5)
     }
   }
 
