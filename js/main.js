@@ -107,6 +107,21 @@ function startEvaluation(){
 
 /** End the evaluation of the current generation */
 function endEvaluation(){
+  //find average score
+  var totalScore = 0
+  var averageScore = 0
+
+  //variable mutation?
+  for(var i = 0; i < neat.popsize; i++){
+    totalScore += abs(players[0].brain.score)
+  }
+  averageScore = totalScore / neat.popsize
+  console.log(averageScore,totalScore)
+
+  neat.mutationRate = averageScore <= 1000 ? Math.round((1 - (averageScore/1000)) * 1 * 1000) / 1000 : 0 
+
+
+  //neat.mutationRate =  1 - (averageScore / totalScore)
   //console.log('Generation:', neat.generation, '- average score:', Math.round(neat.getAverage()));
   //console.log('Fittest score:', Math.round(neat.getFittest().score));
 
@@ -143,5 +158,7 @@ function endEvaluation(){
 
   neat.generation++;
   $('#generation').html(neat.generation)
+  $('#mutationRate').html(neat.mutationRate)
+
   startEvaluation();
 }

@@ -4,6 +4,10 @@ body {
   overflow-y:hidden;
 }
 
+.hud {
+  color: #EEE;
+}
+
 .node {
   cursor: move;
   stroke-width: 1.5px;
