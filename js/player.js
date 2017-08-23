@@ -34,8 +34,8 @@ Player.prototype = {
     // Calculate next position
     this.ax = Math.cos(moveangle)
     this.ay = Math.sin(moveangle)
-    this.vx += this.ax * output[1]
-    this.vy += this.ay * output[1]
+    this.vx += this.ax * output[1] * .8
+    this.vy += this.ay * output[1] * .8
 
     // Limit speeds to maximum speed
     this.vx = this.vx > MAX_SPEED ? MAX_SPEED : this.vx < -MAX_SPEED ? -MAX_SPEED : this.vx;

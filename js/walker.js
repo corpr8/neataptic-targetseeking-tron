@@ -64,7 +64,7 @@ Walker.prototype = {
 
     // Score radius
     noFill();
-    stroke('lightgreen');
+    stroke('darkblue');
     strokeWeight(2);
     ellipse(this.x, this.y, SCORE_RADIUS*2);
     noStroke();

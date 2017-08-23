@@ -46,15 +46,27 @@ function draw(){
 
 /** Draw a square grid with grey lines */
 function squareGrid(){
-  stroke(104, 104, 104, 160);
+  stroke(54, 54, 54, 160);
   strokeWeight(1);
   fill(255);
   for(var x = 0; x < WIDTH/40; x++){
-    line(x * 40, 0, x * 40, HEIGHT);
+    line(x * 40, 0, x * 40, HEIGHT);    
   }
   for(var y = 0; y < HEIGHT/40; y++){
     line(0, y * 40, WIDTH, y * 40);
   }
+
+  stroke(34, 34, 34, 160);
+  var offset = 4
+  
+  for(var x = 0; x < WIDTH/40; x++){
+    line((x * 40)+offset, 0, (x * 40) + offset, HEIGHT);    
+  }
+  for(var y = 0; y < HEIGHT/40; y++){
+    line(0, (y * 40) + offset, WIDTH, (y * 40)+offset);
+  }
+
+
   noStroke();
 }
 

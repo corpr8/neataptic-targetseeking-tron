@@ -10,7 +10,7 @@ Config.warnings = false;
 /** Settings */
 var WIDTH            = $(window).width();
 var HEIGHT           = $(window).height();
-var MAX_SPEED        = 10;
+var MAX_SPEED        = 8;
 var START_X          = WIDTH/2;
 var START_Y          = HEIGHT/2;
 var SCORE_RADIUS     = 100;
@@ -19,8 +19,8 @@ var SCORE_RADIUS     = 100;
 //var PLAYER_AMOUNT    = Math.round(2.3e-4 * WIDTH * HEIGHT);
 var PLAYER_AMOUNT    = 100;
 var ITERATIONS       = 100;
-var MUTATION_RATE    = 0.8;
-var ELITISM          = Math.round(0.1 * PLAYER_AMOUNT);
+var MUTATION_RATE    = 0.5;
+var ELITISM          = Math.round(0.2 * PLAYER_AMOUNT);
 
 // Trained population
 var USE_TRAINED_POP = false;
@@ -85,6 +85,16 @@ function startEvaluation(){
       //console.log(oldScore, oldPos)
       players.splice(v,1)
       players[v] = new Player(genome, v);
+
+      //fix NaN's
+      oldPos.x = isNaN(oldPos.x) ? 0 : oldPos.x
+      oldPos.y = isNaN(oldPos.y) ? 0 : oldPos.y
+      oldPos.ax = isNaN(oldPos.ax) ? 0 : oldPos.ax
+      oldPos.ay = isNaN(oldPos.ay) ? 0 : oldPos.ay
+      oldPos.vx = isNaN(oldPos.vx) ? 0 : oldPos.vx
+      oldPos.vy = isNaN(oldPos.vy) ? 0 : oldPos.vy
+
+
       players[v].setPos(oldPos)
       players[v].setScore(oldScore * .5)
     }
