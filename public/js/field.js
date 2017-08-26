@@ -56,7 +56,7 @@ function squareGrid(){
     line(0, y * 40, WIDTH, y * 40);
   }
 
-  stroke(34, 34, 34, 160);
+  stroke(38, 70, 234, 40);
   var offset = 4
   
   for(var x = 0; x < WIDTH/40; x++){

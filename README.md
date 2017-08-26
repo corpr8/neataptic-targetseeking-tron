@@ -1,3 +1,13 @@
+# This is an enhancement of the awesome taget-seeking AI demo.
+* Install nodejs, 
+* npm install
+* then node server.js
+
+* You can now view the simulation at: localhost:3000/index.html
+* or you can view automated training at localhost:3000/
+
+* average convergence: 74 generations! :-)
+
 # Target-seeking AI
 This repository shows how you can use [Neataptic](https://github.com/wagenaartje/neataptic) to succesfully teach neural networks to trace targets. You can see the genomes live in action [here](https://wagenaartje.github.io/target-seeking-ai/). These genomes have been trained for over 100 generations and are very effective. Visualisation done with [P5.js](https://p5js.org/). The next step would be adding collisions, to possibly reveal some interesting tactics.
 

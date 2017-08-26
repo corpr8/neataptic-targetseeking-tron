@@ -25,6 +25,9 @@ var ELITISM          = Math.round(0.2 * PLAYER_AMOUNT);
 // Trained population
 var USE_TRAINED_POP = false;
 
+//track when we won...
+var firstConvergence = -1
+
 /** Global vars */
 var neat;
 var players = [];
@@ -111,19 +114,21 @@ function endEvaluation(){
   var totalScore = 0
   var averageScore = 0
 
-  //variable mutation?
+  //variable mutation...
   for(var i = 0; i < neat.popsize; i++){
     totalScore += abs(players[0].brain.score)
   }
   averageScore = totalScore / neat.popsize
-  console.log(averageScore,totalScore)
+  //console.log(averageScore,totalScore)
 
   neat.mutationRate = averageScore <= 1000 ? Math.round((1 - (averageScore/1000)) * 1 * 1000) / 1000 : 0 
 
-
-  //neat.mutationRate =  1 - (averageScore / totalScore)
-  //console.log('Generation:', neat.generation, '- average score:', Math.round(neat.getAverage()));
-  //console.log('Fittest score:', Math.round(neat.getFittest().score));
+  if(neat.mutationRate == 0 && firstConvergence == -1 && neat.generation && totalScore > 10000){
+    if(neat.generation > 10){
+      firstConvergence = neat.generation
+      $('#firstConvergence').html(firstConvergence)
+    }
+  }
 
   // Networks shouldn't get too big
   for(var genome in neat.population){
