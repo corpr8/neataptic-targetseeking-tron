@@ -18,7 +18,7 @@ $().ready(function(){
   		failures += 1
   		updatePerformance()
   	}
-  },10000)
+  },60000)
 })
 
 function updatePerformance(){
